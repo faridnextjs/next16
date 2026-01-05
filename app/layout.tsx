@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import ThemeProvider from "@/context/theme";
 
 export const metadata: Metadata = {
-  title: "Dev Overflow",
+  title: "Dev Overflow Stable",
   description:
     "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
   icons: {
@@ -23,11 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${googleSansFlex.variable}  antialiased`}>
-        <h1 className="text-red-500">Navbar STABLE</h1>
-        {children}
-        <h1 className="text-red-500">Footer STABLE</h1>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
