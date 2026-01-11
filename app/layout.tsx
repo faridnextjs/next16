@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import ThemeProvider from "@/context/theme";
+import Navbar from "@/components/navigation/navbar";
 
 export const metadata: Metadata = {
   title: "Dev Overflow Stable",
@@ -32,6 +33,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
